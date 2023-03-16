@@ -1,0 +1,36 @@
+section.work 
+    .container 
+        +blockBox("What we do","Some of our work","Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ab magni esse laboriosam, beatae in qui tenetur placeat reprehenderit consequatur nobis dolor officiis doloremque optio obcaecati iste? Labore, corporis minima.")
+    .work-list 
+        .work-column
+            .work-item 
+                img.work-image(src="./images/img-work1.png")
+                .work-content 
+                    i.fa.fa-home.work-icon 
+                    h3.work-title Creatively designed 
+                    span.work-desc.text.text--light Lorem ipsum dolor sit  
+            .work-item 
+                img.work-image(src="./images/img-work2.png")
+                .work-content 
+                    i.fa.fa-home.work-icon 
+                    h3.work-title Creatively designed
+                    span.work-desc.text.text--light Lorem ipsum dolor sit  
+        .work-column
+            .work-item 
+                img.work-image(src="./images/img-work3.png")
+                .work-content 
+                    i.fa.fa-home.work-icon 
+                    h3.work-title Creatively designed
+                    span.work-desc.text.text--light Lorem ipsum dolor sit  
+            .work-item 
+                img.work-image(src="./images/img-work4.png")
+                .work-content 
+                    i.fa.fa-home.work-icon 
+                    h3.work-title Creatively designed
+                    span.work-desc.text.text--light Lorem ipsum dolor sit  
+        .work-column
+            +workItem("./images/img-work5.png","fa fa-camera","Creatively designed","work-item--full","Lorem ipsum dolor sit")
+        .work-column
+            +workItem("./images/img-work6.png","fa fa-bus","Creatively designed","Lorem ipsum dolor sit")  
+            +workItem("./images/img-work7.png","fa fa-cog","Creatively designed","Lorem ipsum dolor sit")  
+        

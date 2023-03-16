@@ -1,0 +1,131 @@
+@mixin absoluteCenter($direction:"x",$position:absolute){
+    position:$position;
+    @if $direction == "x" {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @if $direction == "y" {
+        top:50%;
+        transform: translateY(-100%);
+    }
+    @if $direction == "both" {
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+    }
+}
+@mixin size($height,$width:$height){
+    width:$width ;
+    height: $height;
+}
+
+@mixin maxWidth($breakpoint) {
+    @media screen and (max-width:$breakpoint) {
+        @content;
+        
+    }
+}
+@mixin minWidth($breakpoint) {
+    @media screen and (min-width:$breakpoint) {
+        @content;
+
+    }
+}
+
+@mixin flexbox(
+    $align-items:stretch,$justify-content:flex-start,$direction:row,$wrap:nowrap,$flex:flex)
+    {
+     display: $flex;
+     align-items: $align-items;
+     justify-content:$justify-content;
+     flex-direction:$direction;
+     flex-wrap:$wrap;
+}
+
+@mixin hideScroll() {
+    -ms-overflow-style:none;
+    scrollbar-width:none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@mixin textClamp($rows:1, $size:100%) {
+    display: -webkit-box;
+    -webkit-line-clamp: $rows;
+    -webkit-box-orient:vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $size;
+    max-width: $size;
+    white-space: pre-line;
+    word-break: break-word;
+}
+@mixin absoluteFull() {
+    position: absolute;
+    @include size(100%);
+    top:0;
+    left:0;
+}
+@mixin touchSlider($width:80%,$gap:2.5rem,$padding:1rem){
+        display: grid !important;
+        justify-content: flex-start !important;
+        grid-auto-columns:$width;
+        grid-auto-flow: column;
+        grid-template-columns: unset;
+        grid-column-gap: $gap;
+        overflow-x: auto;
+        padding: $padding;
+        scroll-snap-type: x mandatory;
+        scroll-snap-stop: always;
+        @include hideScroll;
+    & > * {
+        scroll-snap-align:start ;
+        width: auto;
+    }
+}
+@mixin hoverEffect($itemClass,$contentClass,$transform:"true") {
+    #{$contentClass}{
+        background:
+        linear-gradient(
+            to bottom,
+        rgba($primary-color,0.8),
+        rgba($secondary-color,0.8));
+        @include absoluteFull;
+        @include flexbox(center,center,column);
+        transition:all 0.25s linear;
+        will-change: transform;
+        z-index: 2;
+        opacity: 0;
+        visibility: hidden;
+    }
+    #{$itemClass} {
+        position: relative;
+        z-index: 1;
+        transition: all 0.25s linear;
+        @if $transform == "true"{
+            &:after {
+                content:"";
+                @include absoluteFull;
+                z-index: -1;
+                background-color: $third-color;
+                // transition: all 0.25s linear;
+                // will-change: transform;
+            }
+        }
+        &:hover {
+            #{$contentClass} {
+                opacity: 1;
+                visibility: visible;
+            }
+            @if $transform == "true"{
+                transform: translate(-1rem,-1rem);
+                // &::after {
+                //     transform: translate(1rem,1rem);
+                // }
+            }
+        }
+    }
+}
+
+

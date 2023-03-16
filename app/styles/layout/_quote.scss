@@ -1,0 +1,121 @@
+.quote {
+    margin: 0;
+    padding:6.5rem 0 ;
+    background: $gray-color;
+    
+    &-arrow {
+        padding:1rem 2rem;
+        color: $gray-dark-color;
+        font-size: 3rem;
+        cursor: pointer;
+        
+    }
+
+    &-info {
+        @include flexbox(flex-start,center,column)
+    }
+    &-desc {
+        font-size: 2.4rem;
+        font-family: $secondary-font;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: $text-color;
+        @include textClamp(3);
+    }
+    &-author {
+        font-family: $third-font;
+        font-size: 2.4rem;
+        position: relative;
+        padding-left: 7rem;
+        &::after {
+            content: "";
+            @include absoluteCenter(y);
+            left: 0;
+            @include size(4px,6rem);
+            background: $primary-color;
+
+        }
+    }
+    &-image {
+        @include size(22rem);
+        border-radius: 100%;
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-right: 2.5rem;
+    }
+
+    &-icon {
+    margin-right: 6rem;
+    @include size(15rem);
+    @include flexbox(center, center);
+    border: 3px solid $third-color;
+    flex-shrink: 0;
+    }
+
+    ///slick slider
+    .slick-initialized .slick-slide {
+        display: flex;
+    }   
+    .slick-arrow {
+        padding:1rem 3rem 1rem 3rem;
+        color: $gray-dark-color;
+        font-size: 3rem;
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+        @include absoluteCenter(y);
+        z-index: 10;
+    }
+    .slick-prev {
+        left: -40px;
+        bottom: 70px;
+    }
+    .slick-next {
+        right: 0;
+        bottom: 70px;
+    }
+
+
+
+
+
+@media screen and (min-width:768px) {
+    &-item {
+        padding: 0 5.5rem;
+        @include flexbox
+    }
+}
+@media screen and (max-width:767px) {
+    &-arrow {
+        display: none;
+    }
+    &-item {
+        padding: 0 ;
+        @include flexbox(center,center,column)
+    }
+    &-icon {
+        margin-right: 0;
+        @include size(10rem);
+        img {
+            max-width: 50%;
+        }
+    }
+    &-image{
+        margin-right: 0;
+    }
+    &-info {
+        margin-top:3rem;
+    }
+    &-desc {
+        display: block;
+        font-size: 1.6rem;
+    }
+    &-author {
+        font-size: 2rem ;
+    }
+    
+    
+}
+}

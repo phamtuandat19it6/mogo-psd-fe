@@ -1,0 +1,99 @@
+.wedo {
+    padding: 10rem 0;
+ 
+    &-image {
+        object-fit: cover;
+    }
+    &-item-header {
+        @include flexbox(center);
+        padding: 1.5rem;
+        border: 1px solid $gray-light-color;
+        cursor:pointer;
+    }
+    &-item-icon {
+        margin-right: 1.5rem;
+    }
+    &-item-title {
+        text-transform: uppercase;
+        font-weight: 600;
+        @include textClamp(1);
+        max-width: 80%;
+    }
+    &-item-arrow {
+        margin-left: auto;
+        color:$gray-dark-color;
+        font-size: 2.5rem;
+    }
+    &-item-content {
+        padding: 2rem;
+        border: 1px solid $gray-light-color;
+        border-top: 0;
+        font-size: 1.5rem;
+        font-family: $secondary-font;
+        color: $text-color;
+        font-style: italic;
+        font-weight: 300;
+        display: none;
+
+    }
+    &-item:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+    &-item.is-active .wedo-item-content {
+        display: inline-block;
+    }
+    &-item-text {
+        line-height: 1.6;
+        height:14rem;
+        overflow: auto;
+        padding-right: 2rem;
+        &::-webkit-scrollbar {
+            width: 6px;
+            
+          }
+           
+          &::-webkit-scrollbar-track {
+            background-color:$gray-light-color;
+            border-radius: 10px;
+          }
+           
+          &::-webkit-scrollbar-thumb {
+            background-color: $third-color;
+            
+            border-radius: 10px;
+          }
+    }
+
+@media screen and (min-width:1024px) {
+    // &-container {
+    //     @include flexbox(stretch,space-between);
+    // }
+    // &-content,
+    // &-image {
+    //     width: calc(50% - 1.5rem);
+    // }
+    
+    //css grid 
+
+    &-container {
+        display: flex;
+        grid-template-columns: repeat(2,1fr);
+        grid-column-gap: 3rem;
+    }
+    &-image {
+        display: inline-block;
+        width:100%;
+        object-fit: cover;
+        
+    }
+    
+}    
+@media screen and (max-width:1023px) {
+    padding: 5rem 0 0;
+    &-image {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+}    
+}

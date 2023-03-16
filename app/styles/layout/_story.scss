@@ -1,0 +1,139 @@
+.story {
+    padding: 10rem 0;
+    background-color: white;
+    &-list {
+        @include flexbox(stretch,space-between);
+    }
+    &-item {
+        width: calc(33.33% - 20px);
+        @include flexbox(stretch,space-between,column);
+    }
+    &-info {
+        @include flexbox(flex-start,space-between,column);
+        // margin-bottom: 1.5rem;
+        // padding-bottom: 1.5rem;
+        // border-bottom: 1px solid #e5e5e5;
+        // height: auto;
+
+    }
+    &-media {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+    &-image {
+        @include size (24rem, 100%);
+        object-fit: cover;
+    }
+    &-date {
+        position: absolute;
+        left: -1rem;
+        bottom: 1rem;
+        color:white;
+        padding: 1.5rem 2rem;
+        background: $third-color;
+        @include flexbox(center,center,column);
+        &-number {
+            font-weight: bold;
+            font-size: 3rem;
+        }
+    }
+    &-title {
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        line-height: 1.4;
+        font-size: 1.5rem;
+    }
+    &-title-inner {
+        @include textClamp(1);
+
+    }
+    &-desc {
+        font-style: normal;
+        color: $text-color;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid #e5e5e5;
+    }
+    &-desc-inner {
+        @include textClamp(4);
+    }
+    &-meta {
+        @include flexbox(center);
+        &-item {
+            margin-right: 2rem;
+        }
+        &-icon {
+            color: $third-color;
+            margin-right: 5px ;
+        }
+        &-number {
+            color:$text-color;
+        }
+    }
+
+@media screen and(max-width:1023px) {
+    padding: 5rem 0;
+    &-image{
+        @include size (14rem, 100%);
+        object-fit: cover;
+    }
+    &-date {
+        padding: 1rem 1.5rem;
+    } 
+    &-title {
+        font-size: 1.2rem;
+    }
+    &-desc {
+        font-size: 1.3rem;
+    }
+    &-desc-inner {
+        @include textClamp(4);
+    }
+}
+@media screen and(max-width:767px) {
+    padding-bottom: 0;
+    &-list {
+        display: block;
+    }
+    &-item {
+        width: 100%;
+        margin-bottom: 5rem;
+    }
+    // &-date {
+    //     bottom: 5px;
+    //     left: 5px;
+    // }
+    &-image {
+        height: auto;
+    }
+
+}
+}
+
+.map {
+    padding:6rem 0;
+    background: linear-gradient(to bottom
+        rgba(white,0.6),
+        rgba(white,0.6)), url("../images/img-map.png") no-repeat center / cover;
+    &-content {
+        @include flexbox(center,center,column)
+    }
+    &-heading {
+        position: relative;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: bold;
+        color: $primary-color;
+        padding-bottom: 2.5rem;
+        margin-top: 1.5rem;
+        &:after {
+            content:"";
+            @include size(4px,6rem);
+            background: $primary-color;
+            @include absoluteCenter();
+            bottom: 0;
+            
+        }
+    }
+}
